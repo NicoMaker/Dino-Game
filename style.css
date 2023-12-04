@@ -25,7 +25,7 @@ button {
     border-radius: 50px;
     color: blue;
     background-color: yellow;
-    font-size: 30px;
+    font-size: 40px;
 }
 
 h1 {
@@ -36,15 +36,11 @@ h1 {
 }
 
 p{
-    font-size: 25px;
+    font-size: 35px;
 }
 
 #hint{
     color: darkblue;
-}
-
-#risultato{
-    color:yellow;
 }
 
 select
@@ -54,4 +50,11 @@ select
     color: yellow;
     font-size: 30px;
     text-align: center;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    width: auto;
+    height: 150px;
 }

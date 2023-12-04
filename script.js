@@ -22,9 +22,12 @@ function controllaIndovinello() {
     const indovinelloUtente = dinosauri[selezionato.value].nome.toLowerCase();
 
     if (indovinelloUtente === dinosauroCorrente.nome.toLowerCase()) {
-        document.getElementById("risultato").textContent = "Corretto! Hai indovinato!";
+
+        let stampaImg = `<img src="Immagine_contenta.jpg">`;
+        document.getElementById("risultato").innerHTML = stampaImg;
     } else {
-        document.getElementById("risultato").textContent = "Sbagliato. Prova di nuovo.";
+        let stampaImg = `<img src="Immagine_scontenta.jpg"> `
+        document.getElementById("risultato").innerHTML = stampaImg;
     }
 }
 
@@ -32,10 +35,16 @@ function controllaIndovinello() {
 function nuovoDinosauro() {
     indiceCorrente = (indiceCorrente + 1) % dinosauri.length;
     dinosauroCorrente = dinosauri[indiceCorrente];
-    document.getElementById("hint").textContent = dinosauroCorrente.indizi[0];
+
+    // Seleziona un suggerimento casuale
+    const indizioCasualeIndex = Math.floor(Math.random() * dinosauroCorrente.indizi.length);
+    const indizioCasuale = dinosauroCorrente.indizi[indizioCasualeIndex];
+
+    document.getElementById("hint").textContent = indizioCasuale;
     document.getElementById("risultato").textContent = "";
     document.getElementById("guessInput").value = "";
 }
+
 
 function popolaSelettore() {
     const selettore = document.getElementById("dinosaurSelector");
