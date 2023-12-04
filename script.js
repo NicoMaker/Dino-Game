@@ -10,7 +10,6 @@ const dinosauri = [
     { nome: "Ankylosaurus", indizi: ["Erbivoro quadrupede", "Viveva nel Cretaceo", "Corazza di piastre ossee e una mazza sulla coda"] },
     { nome: "Parasaurolophus", indizi: ["Erbivoro bipede", "Viveva nel Cretaceo", "Cresta a forma di tubo sulla testa"] },
     { nome: "Spinosaurus", indizi: ["Carnivoro semiacquatico", "Viveva nel Cretaceo", "Lungo muso simile a quello di un pesce"] },
-    // Aggiungi altri dinosauri secondo necessità
 ];
 
 let indiceCorrente = 0;
@@ -19,7 +18,8 @@ let dinosauroCorrente = dinosauri[indiceCorrente];
 document.getElementById("hint").textContent = dinosauroCorrente.indizi[0];
 
 function controllaIndovinello() {
-    const indovinelloUtente = document.getElementById("guessInput").value.toLowerCase();
+    const selezionato = document.getElementById("dinosaurSelector");
+    const indovinelloUtente = dinosauri[selezionato.value].nome.toLowerCase();
 
     if (indovinelloUtente === dinosauroCorrente.nome.toLowerCase()) {
         document.getElementById("risultato").textContent = "Corretto! Hai indovinato!";
@@ -28,8 +28,32 @@ function controllaIndovinello() {
     }
 }
 
+
 function nuovoDinosauro() {
     indiceCorrente = (indiceCorrente + 1) % dinosauri.length;
+    dinosauroCorrente = dinosauri[indiceCorrente];
+    document.getElementById("hint").textContent = dinosauroCorrente.indizi[0];
+    document.getElementById("risultato").textContent = "";
+    document.getElementById("guessInput").value = "";
+}
+
+function popolaSelettore() {
+    const selettore = document.getElementById("dinosaurSelector");
+
+    for (let i = 0; i < dinosauri.length; i++) {
+        const dinosauro = dinosauri[i];
+        const opzione = document.createElement("option");
+        opzione.value = i;
+        opzione.textContent = dinosauro.nome;
+        selettore.appendChild(opzione);
+    }
+}
+
+
+popolaSelettore();
+
+function selezionaDinosauro() {
+    indiceCorrente = document.getElementById("dinosaurSelector").value;
     dinosauroCorrente = dinosauri[indiceCorrente];
     document.getElementById("hint").textContent = dinosauroCorrente.indizi[0];
     document.getElementById("risultato").textContent = "";

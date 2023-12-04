@@ -35,14 +35,23 @@ h1 {
     text-shadow: 2px 2px 4px white;
 }
 
-p {
+p{
     font-size: 25px;
-    color:darkblue;
-    text-shadow: 2px 2px 4px white;
 }
 
-input{
-    font-size: 30px;
+#hint{
+    color: darkblue;
+}
+
+#risultato{
+    color:yellow;
+}
+
+select
+{
     border-radius: 50px;
+    background-color: green;
+    color: yellow;
+    font-size: 30px;
     text-align: center;
 }
